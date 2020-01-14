@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <div>
+        <input id="input" placeholder="Type text here..." /><br>
+    </div>
+    <div>
+        <button id="submit" type="submit">Enter</button>
+    </div>
+    <div id="display">
+    </div>
+
+    <script>
+        function getText() {
+            console.log('getText function');
+            var text = document.getElementById('input').value;
+            console.log(text);
+            document.getElementById('display').innerHTML = text;
+        }
+        document.getElementById('submit').addEventListener('click', getText);
+
+    </script>
+</body>
+
+</html>
