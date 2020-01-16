@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>W3.CSS</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <style>
+    
+        *{
+            margin: 0 auto;
+        }
+        
+    </style>
+    <title>Team Activity</title>
+
+</head>
+
+<body>
+    <script>
+        //practice array
+    const colors=["red", "blue", "green", "yellow", "orance"];
+
+    const adjectives = [
+        "bold",
+        "shy",
+        "strong",
+        "lazy",
+        "young",
+        "old"
+    ];
+
+    const nouns =[
+        "apple",
+        "bike",
+        "computer",
+        "bread",
+        "bag",
+        "school"
+    ];
+
+    const numbers =[1, 4, 7, 12, 13, 34, 45, 266, 4234];
+
+    for(let i = 0; i<colors.length; i++){
+        console.dir(colors);
+        console.log(colors);
+        console.log(colors[i]);
+    }
+
+    //for each
+    colors.forEach(function(item, ind){
+        console.log(ind, item);
+    });
+    function stuff(item){
+        console.log(item);
+    }
+    colors.forEach(stuff);
+
+
+    //example of map: negative numbers
+    const newArray = colors.map((colors) => {
+        return 'light' + colors;
+    });
+    const newArray2 = colors.map(colors => "light" + colors);
+    console.log(newArray);
+    const negative = numbers.map(number => {
+        if(number < 50)
+        return number * -1;
+        else return number});
+
+        console.log(negative);
+
+    //example of map with arrow function declaration
+
+    //filter example with indesOf to do a substring search
+
+    //random number generation
+    console.log(Math.random());
+
+    //random numbers: write a function that will return a random number in 
+
+    //closures
+
+    function random6(){
+        return Math.floor(Math.random()*6) +1;
+    };
+   
+   function randomWord(arr){
+       return Math.floor(Math.random(arr.length));
+   }
+
+   function showRandomWord(){
+       const sentence = "The " + adjectives[randomWord(adjectives)] + " " + nouns[randomWord(nouns)];
+       return sentence;
+   }
+
+    </script>
+        
+      
+    <h1>hi</h1>    
+</body>
+</html>
