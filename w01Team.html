@@ -9,6 +9,7 @@
 </head>
 
 <body>
+    <!-- text input and display function -->
     <div>
         <input id="input" placeholder="Type text here..." /><br>
     </div>
@@ -17,16 +18,66 @@
     </div>
     <div id="display">
     </div>
+    <br><br>
+
+    <!-- Loop add function -->
+    <div>
+        <input id="numinput" placeholder="Enter number here..." /><br>
+    </div>
+    <div>
+        <button id="loopadd" type="submit">Enter</button>
+    </div>
+    <div id="numloopdisplay">
+    </div>
+    <br><br>
+
+    <!-- two number add function -->
+    <div>
+        <input id="firstnum" placeholder="Enter number here..." /> + <input id="secondnum"
+            placeholder="Enter number here..." /><br>
+    </div>
+    <div>
+        <button id="sum" type="submit">Enter</button>
+    </div>
+    <div id="sumdisplay">
+    </div>
 
     <script>
+        /* text input and display function */
         function getText() {
             console.log('getText function');
-            var text = document.getElementById('input').value;
+            let text = document.getElementById('input').value;
             console.log(text);
             document.getElementById('display').innerHTML = text;
         }
         document.getElementById('submit').addEventListener('click', getText);
 
+        /* Loop add function */
+        function loopAdd() {
+            console.log('loopadd function');
+            let numInput = parseFloat(document.getElementById('numinput').value);
+            console.log(numInput);
+
+            /* loop that makes i equal to inputed number and then adds it to a total till it reaches zero */
+            let loopTotal = 0.0;
+            for (let i = numInput; i > 0; i--) {
+                loopTotal += i;
+            }
+            document.getElementById('numloopdisplay').innerHTML = loopTotal;
+        }
+        document.getElementById('loopadd').addEventListener('click', loopAdd);
+
+        /* two number add function */
+        function sum() {
+            console.log('sum function');
+            let first = parseFloat(document.getElementById('firstnum').value);
+            let second = parseFloat(document.getElementById('secondnum').value);
+            /* adds the two inputed numbers */ 
+            let sumTotal = first + second;
+            console.log(sumTotal);
+            document.getElementById('sumdisplay').innerHTML = sumTotal;
+        }
+        document.getElementById('sum').addEventListener('click', sum);
     </script>
 </body>
 
