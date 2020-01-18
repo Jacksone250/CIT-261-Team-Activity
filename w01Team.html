@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<!-- Note for Brother Thompson or Grader: This github file is for Ethan, Jane, and Will in CIT 261 Section 1. -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -41,6 +41,31 @@
     </div>
     <div id="sumdisplay">
     </div>
+    <br><br>
+
+    <!-- two number subtract function -->
+    <div>
+        <input id="x" placeholder="Enter number here..." /> - <input id="y"
+            placeholder="Enter number here..." /><br>
+    </div>
+    <div>
+        <button id="subtract" type="submit">Enter</button>
+    </div>
+    <div id="subtractiondisplay">
+    </div>
+    <br><br>
+
+    <!-- two number multiply function -->
+    <div>
+        <input id="a" placeholder="Enter number here..." /> * <input id="b"
+            placeholder="Enter number here..." /><br>
+    </div>
+    <div>
+        <button id="multiply" type="submit">Enter</button>
+    </div>
+    <div id="multiplydisplay">
+    </div>
+    <br><br>
 
     <script>
         /* text input and display function */
@@ -55,7 +80,7 @@
         /* Loop add function */
         function loopAdd() {
             console.log('loopadd function');
-            let numInput = parseFloat(document.getElementById('numinput').value);
+            const numInput = parseFloat(document.getElementById('numinput').value);
             console.log(numInput);
 
             /* loop that makes i equal to inputed number and then adds it to a total till it reaches zero */
@@ -70,14 +95,37 @@
         /* two number add function */
         function sum() {
             console.log('sum function');
-            let first = parseFloat(document.getElementById('firstnum').value);
-            let second = parseFloat(document.getElementById('secondnum').value);
+            const first = parseFloat(document.getElementById('firstnum').value);
+            const second = parseFloat(document.getElementById('secondnum').value);
             /* adds the two inputed numbers */ 
-            let sumTotal = first + second;
+            const sumTotal = first + second;
             console.log(sumTotal);
             document.getElementById('sumdisplay').innerHTML = sumTotal;
         }
         document.getElementById('sum').addEventListener('click', sum);
+
+        /* two number subtraction function using arrow format */
+        function subtraction(){
+            const x = parseFloat(document.getElementById('x').value);
+            const y = parseFloat(document.getElementById('y').value);
+            let subtractionTotal = () => x - y; 
+            document.getElementById('subtractiondisplay').innerHTML = subtractionTotal();
+        }
+        document.getElementById('subtract').addEventListener('click', subtraction); 
+
+        /* two number mutiply function using anonymous format */
+        function multiply() {
+            console.log('sum function');
+            let first = parseFloat(document.getElementById('a').value);
+            let second = parseFloat(document.getElementById('b').value);
+            /* adds the two inputed numbers */ 
+            let sumTotal = function(){
+                return first * second;
+            }
+            console.log(sumTotal);
+            document.getElementById('multiplydisplay').innerHTML = sumTotal();
+        }
+        document.getElementById('multiply').addEventListener('click', multiply);
     </script>
 </body>
 
