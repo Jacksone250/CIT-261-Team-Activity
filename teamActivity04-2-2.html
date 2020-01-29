@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Week 04 Team</title>
+    <style>
+        * {
+            margin: 0 auto;
+        }
+
+        .grid {
+            width: 306px;
+            flex-wrap: wrap;
+        }
+
+        .cell {
+            float: left;
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+            background-color: lightgray;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 64px;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .click {
+            padding-top: 330px;
+            margin-left: 42%;
+        }
+
+        .myButton {
+
+            background: linear-gradient(to bottom, #2dabf9 5%, #0688fa 100%);
+            background-color: skyblue;
+            border-radius: 3px;
+            border: 1px solid #0b0e07;
+            display: inline-block;
+            cursor: pointer;
+            color: #ffffff;
+            font-size: 15px;
+            padding: 9px 23px;
+            text-decoration: none;
+        }
+
+        .myButton:hover {
+            background: linear-gradient(to bottom, #0688fa 5%, #2dabf9 100%);
+            background-color: #0688fa;
+        }
+
+        .myButton:active {
+            position: relative;
+            top: 1px;
+        }
+    </style>
+</head>
+
+<body>
+    <form name="tictactoe">
+        <h1>Play Tic-Tac-Toe!</h1>
+        <div class="grid" id="board">
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+        </div>
+        <div class="click">
+            <button class="myButton" id="reset">Reset</button>
+
+        </div>
+    </form>
+    <script>
+        const grid = document.getElementById('board');
+        
+        /*
+         const grid = document.getElementById('board').addEventListener("touchend");
+         */
+        
+        const reset = document.getElementById('reset');
+
+        const playerX = 'X';
+        const playerO = 'O';
+
+        let player = playerX;
+
+        function checkMark(e) {
+            e.target.innerHTML = player;
+            if (player == playerX)
+                player = playerO;
+
+            else player = playerX;
+        }
+
+
+        board.addEventListener('click', checkMark);
+    </script>
+</body></html>
