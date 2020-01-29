@@ -88,21 +88,22 @@
         </div>
     </form>
     <script>
-        document.getElementById("board").addEventListener("touchend");
+        document.getElementById("board").addEventListener("touchend", play);
 
         document.getElementById("endGame").addEventListener("touchend", continueGame)
 
+        let turnCounter = 0;
+        let continueGame = true;
+        
         function play() {
-            let turnCounter = 0;
-            let continueGame = true;
-
-            while (continueGame) {
-                setBox( target ,turnCounter);
-                turnCounter++;
-            }
+            // Changes what is displayed in a box 
+            // Note: we needed to set a target cell for setBox
+            setBox();
+            // increments turn counter to determine which players turn it is
+            turnCounter++;
         }
 
-        function setBox(cell, turn) {
+        function setBox(cell) {
             if (turn % 2 === 0) {
                 console.log('setBox if statement');
                 document.getElementById(cell).innerHTML = `<h2>X</h2>`;
@@ -114,7 +115,8 @@
         }
 
         function endGame() {
-            return continueGame = false;
+            turnCounter = 0;
+            continueGame = false;
         }
     </script>
 </body>
