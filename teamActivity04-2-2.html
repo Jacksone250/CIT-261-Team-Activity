@@ -13,6 +13,7 @@
 
         .grid {
             width: 306px;
+            height: 306px;
             flex-wrap: wrap;
         }
 
@@ -20,25 +21,31 @@
             float: left;
             width: 100px;
             height: 100px;
-            /*  */
-            /*  */
-            background-color: lightgray;
-            text-align: center;
-            justify-content: center;
-        }
-
-        /* #center {
             border: 1px solid black;
-        } */
-        
-        .horizontal {
-            border-bottom: 1px solid black;
-            border-top: 1px solid black;
         }
 
-        .vertical {
-            border-right: 1px solid black;
-            border-left: 1px solid black;
+        .cell:nth-child(3n) {
+            border-right: 0;
+
+        }
+
+        .cell:nth-child(3n-2) {
+            border-left: 0;
+
+        }
+
+        .cell:nth-child(1),
+        .cell:nth-child(2),
+        .cell:nth-child(3) {
+            border-top: 0;
+
+        }
+
+        .cell:nth-child(7),
+        .cell:nth-child(8),
+        .cell:nth-child(9) {
+            border-bottom: 0;
+
         }
 
         h1 {
@@ -88,13 +95,13 @@
         <h1>Play Tic-Tac-Toe!</h1>
         <div class="grid" id="board">
             <div class="cell"></div>
-            <div class="cell vertical"></div>
             <div class="cell"></div>
-            <div class="cell horizontal"></div>
-            <div class="cell horizontal vertical"></div>
-            <div class="cell horizontal"></div>
             <div class="cell"></div>
-            <div class="cell vertical"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
             <div class="cell"></div>
         </div>
         <div class="click">
@@ -103,27 +110,28 @@
         </div>
     </form>
     <script>
-        // const grid = document.getElementById('board');
-        // const grid = document.getElementById('board').addEventListener("touchend");
-        // const reset = document.getElementById('reset');
+        const grid = document.getElementById('board');
 
-        const playerX = '<h2>X</h2>';
-        const playerO = '<h2>O</h2>';
+        /*
+         const grid = document.getElementById('board').addEventListener("touchend");
+         */
+
+        const reset = document.getElementById('reset');
+
+        const playerX = 'X';
+        const playerO = 'O';
 
         let player = playerX;
 
         function checkMark(e) {
-            if ( e.target.innerHTML != 'X' && e.target.innerHTML != 'O') {
-                e.target.innerHTML = player;
-                if (player == playerX)
-                    player = playerO;
-                else player = playerX;
-            }
+            e.target.innerHTML = player;
+            if (player == playerX)
+                player = playerO;
+
+            else player = playerX;
         }
 
-        //board.addEventListener('touchend', checkMark);
+
         board.addEventListener('click', checkMark);
     </script>
-</body>
-
-</html>
+</body></html>
