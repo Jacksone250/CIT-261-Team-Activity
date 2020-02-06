@@ -60,7 +60,9 @@ const hikeList = [
       return this.getAllHikes().find(hike => hike.name === hikeName);
     }
     //show a list of hikes in the parentElement
-    showHikeList() {}
+    showHikeList() {
+      return this.getAllHikes();
+    }
     // show one hike with full details in the parentElement
     showOneHike(hikeName) {}
     // in order to show the details of a hike ontouchend we will need to attach 
