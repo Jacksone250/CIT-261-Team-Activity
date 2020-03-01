@@ -23,68 +23,68 @@
     <button id="prev">Prevoius</button>
     <button id="next">Next</button>
     </div>
-
+    <ul id="skipToList">
+    </ul>
 
 <script>
-        function getPeople(url){
-        return fetch(url).then((response) => {
-            console.log(response);
-            return response.json();
-        }).catch((err) => {
-            console.log(err);
-        });
-    }
-
-    function buildList(data) {
-        console.log(data);
-        const listOfPeople = document.getElementById('listOfPeople');
-        const people = data.results;
-        for (i in people) {
-            listOfPeople.innerHTML += `<li><h3>${people[i].name}</h3></li>`;
-        };
-    }
-
-    function removeCurrentList() {
-        const listOfPeople = document.getElementById('listOfPeople');
-        const i = 0;
-        while (listOfPeople.children.length > i) {
-            listOfPeople.removeChild(listOfPeople.firstChild);
+        function getPeople(url) {
+            return fetch(url).then((response) => {
+                console.log(response);
+                return response.json();
+            }).catch((err) => {
+                console.log(err);
+            });
         }
-    }
 
-    
-    function nextPage(){
-        // remove current list
-         removeCurrentList();
-        // get new list
-        getPeople(next).then((data) => {
+        function buildList(data) {
+            console.log(data);
+            const listOfPeople = document.getElementById('listOfPeople');
+            const people = data.results;
+            for (i in people) {
+                listOfPeople.innerHTML += `<li><h3>${people[i].name}</h3></li>`;
+            };
+        }
+
+        function removeCurrentList() {
+            const listOfPeople = document.getElementById('listOfPeople');
+            const i = 0;
+            while (listOfPeople.children.length > i) {
+                listOfPeople.removeChild(listOfPeople.firstChild);
+            };
+        }
+
+        function loadPage(url) {
+            // remove current list
+            removeCurrentList();
+            // get new list
+            getPeople(url).then((data) => {
+                buildList(data);
+                next = data.next;
+                prev = data.previous;
+            });
+        }
+
+        function skipTo(count) {
+            const skipToList = document.getElementById('skipToList');
+            for (let i = 1; i <= Math.ceil(count / 10); i++){
+                skipToList.innerHTML += `<li><button id="page${i}">${i}</button></li>`
+                document.getElementById('page'+i).addEventListener("click", function(){loadPage(baseURL+i)});
+            };
+
+        }
+
+        let next;
+        let prev;
+        const baseURL = "https://swapi.co/api/people/?page=";
+
+        getPeople("https://swapi.co/api/people/").then((data) => {
             buildList(data);
             next = data.next;
             prev = data.previous;
+            skipTo(data.count);
+            document.getElementById('prev').addEventListener("click", function(){loadPage(prev)});
+            document.getElementById('next').addEventListener("click", function(){loadPage(next)});
         });
-    }
-
-    function prevPage(){
-        // remove current list
-        removeCurrentList();
-        // get new list
-        getPeople(prev).then((data) => {
-            buildList(data);
-            next = data.next;
-            prev = data.previous;
-        });
-    }
-
-    let next;
-    let prev;
-    
-    getPeople("https://swapi.co/api/people/").then((data) => {
-        buildList(data);
-        next = data.next;
-        prev = data.previous;
-        document.getElementById('prev').addEventListener("click", prevPage);
-        document.getElementById('next').addEventListener("click", nextPage);    
-    });
     
 </script>
 </body>
