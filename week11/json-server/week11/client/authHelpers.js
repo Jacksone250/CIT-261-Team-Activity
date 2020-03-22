@@ -1,3 +1,28 @@
+export class Errors {
+  constructor(errorElementId) {
+    this.errorElement = document.getElementById(errorElementId);
+  }
+
+  handleError(error, callback) {
+    const code = error.message.substring(0, 3);
+    this.displayError(error);
+    if (code == 500 || code == 401) {
+      callback();
+    }
+    console.log(code);
+  }
+
+  displayError(error) {
+    this.errorElement.innerHTML = error.message;
+    this.errorElement.classList.remove('hidden');
+  }
+  clearError() {
+    this.errorElement.innerHTML = '';
+    this.errorElement.classList.add('hidden');
+  }
+}
+
+
 // Server Address
 const baseURL = 'http://127.0.0.1:3000/';
 // helper function to make an http request with fetch.
@@ -32,3 +57,4 @@ export async function makeRequest(url, method = 'GET', body = null, token = null
 
   // not catching the error here...so we will need to catch it later on and handle it.
 }
+
